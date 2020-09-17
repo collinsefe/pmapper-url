@@ -15,8 +15,8 @@ LOCAL_STORAGE_PATH = "/tmp/"
 
 def lambda_handler(event, context):
     
-    BUCKET_NAME = event['queryStringParameters']['bucketname']
-    BUCKET_REGION = event['queryStringParameters']['bucketregion']
+    #BUCKET_NAME = event['queryStringParameters']['bucketname']
+    #BUCKET_REGION = event['queryStringParameters']['bucketregion']
     
     
     dateNow = datetime.now()
@@ -25,21 +25,20 @@ def lambda_handler(event, context):
     
     signedURL = create_signed_URL(BUCKET_NAME, s3ObjectName, BUCKET_REGION) 
     print(signedURL)
-    print('&&&&&&&&&&&&&-------------&&&&&&&&&&&&&&&&')
-    
+        
     payload = {}
     payload['bucketname'] = BUCKET_NAME
     payload['bucketregion'] = BUCKET_REGION
     
     lambda_client.invoke(
-    FunctionName='arn:aws:lambda:eu-west-1:206322004324:function:pmapper-s3-12092020',
+    FunctionName='arn:aws:lambda:eu-west-1:SECOND_LAMBDA_NAME',
     InvocationType='Event',
     Payload=json.dumps(payload)
     )
     
     apiResponse = {}
     apiResponse['signedURL'] = signedURL
-    apiResponse['message'] = "Please click on the URL to get access to the output file"
+    apiResponse['message'] = "Thank you for your request. You can use the link above to access the output file. Please allow up to 10 mins"
    
     
     responseObject = {}
