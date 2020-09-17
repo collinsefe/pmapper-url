@@ -29,6 +29,7 @@ def lambda_handler(event, context):
     payload = {}
     payload['bucketname'] = BUCKET_NAME
     payload['bucketregion'] = BUCKET_REGION
+    payload['s3objectname'] = s3ObjectName
     
     lambda_client.invoke(
     FunctionName='arn:aws:lambda:eu-west-1:SECOND_LAMBDA_NAME',
