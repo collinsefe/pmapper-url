@@ -15,8 +15,8 @@ LOCAL_STORAGE_PATH = "/tmp/"
 
 def lambda_handler(event, context):
     
-    #BUCKET_NAME = event['queryStringParameters']['bucketname']
-    #BUCKET_REGION = event['queryStringParameters']['bucketregion']
+    BUCKET_NAME = event['queryStringParameters']['bucketname']
+    BUCKET_REGION = event['queryStringParameters']['bucketregion']
     
     
     dateNow = datetime.now()
